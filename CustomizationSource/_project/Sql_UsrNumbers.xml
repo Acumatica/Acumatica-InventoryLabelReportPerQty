@@ -1,0 +1,8 @@
+﻿<Sql TableName="UsrNumbers" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="UsrNumbers">
+  <col name="Number" type="Int" />
+  <index name="PK__UsrNumbe__78A1A19C352926CB" clustered="true" primary="true" unique="true">
+    <col name="Number" />
+  </index>
+</table>]]></CDATA>
+</Sql>

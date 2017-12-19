@@ -1,0 +1,28 @@
+﻿<Graph ClassName="PopulateUsrNumbers" Source="#CDATA" IsNew="True" FileType="NewFile">
+    <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+using Customization;
+
+namespace PXInventoryLabelReportExtPkg
+{
+    //Customization plugin is used to execute custom actions after customization project was published	
+    public class PopulateUsrNumbers : CustomizationPlugin
+    {
+        //This method executed after customization was published and website was restarted.	
+        public override void UpdateDatabase()
+        {
+            //Where 1000 could be max possible value for unit per item - adjust as per your need
+            int iNumberOfLabels = 1000;
+            UsrNumbers usrNumberMax = PXSelectGroupBy<UsrNumbers, Aggregate<Max<UsrNumbers.number>>>.Select(new PXGraph());
+
+            if (usrNumberMax != null)
+            {
+                for (int i = (usrNumberMax.Number.GetValueOrDefault(0) + 1); i <= iNumberOfLabels; i++)
+                {
+                    PXDatabase.Insert<UsrNumbers>(new PXDataFieldAssign<UsrNumbers.number>(i));
+                }
+            }
+        }
+    }
+}]]></CDATA>
+</Graph>

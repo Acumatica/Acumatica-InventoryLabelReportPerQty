@@ -1,0 +1,18 @@
+﻿<Graph ClassName="UsrNumbers" Source="#CDATA" IsNew="True" FileType="NewFile">
+    <CDATA name="Source"><![CDATA[using System;
+using PX.Data;
+
+namespace PXInventoryLabelReportExtPkg
+{
+    [Serializable]
+    public class UsrNumbers : IBqlTable
+    {
+        #region Number
+        [PXDBInt(IsKey = true)]
+        [PXUIField(DisplayName = "Number")]
+        public virtual int? Number { get; set; }
+        public abstract class number : IBqlField { }
+        #endregion
+    }
+}]]></CDATA>
+</Graph>
